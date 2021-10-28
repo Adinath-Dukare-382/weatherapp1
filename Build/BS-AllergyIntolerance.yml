@@ -13,8 +13,8 @@ steps:
 - checkout: MyGitHubRepo
 - task: CopyFiles@2
   inputs:
-    workingDirectory: 'MyGitHubRepo'
-    SourceFolder: '$(Build.SourcesDirectory)/POCJson'
+    # workingDirectory: 'MyGitHubRepo'
+    SourceFolder: '$(Build.SourcesDirectory)/MyGitHubRepo/POCJson'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/files'
 
