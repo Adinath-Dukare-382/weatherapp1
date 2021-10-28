@@ -11,5 +11,11 @@ pool: SamplePool
 steps:
 - checkout: self
 - checkout: MyGitHubRepo
+- task: CopyFiles@2
+  inputs:
+    workingDirectory: 'MyGitHubRepo'
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: 'variables.tf'
+    TargetFolder: '$(build.artifactsstagingdirectory)/files'
 
 - script: dir $(Build.SourcesDirectory)
