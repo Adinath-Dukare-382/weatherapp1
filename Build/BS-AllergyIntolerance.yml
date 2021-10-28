@@ -6,8 +6,7 @@ resources:
     name: Adinath-Dukare-382/poconjson
 
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: SamplePool
 
 steps:
 - checkout: self
