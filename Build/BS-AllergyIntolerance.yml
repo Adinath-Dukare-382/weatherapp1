@@ -13,7 +13,7 @@ steps:
 - checkout: MyGitHubRepo
 - task: CopyFiles@2
   inputs:
-    # workingDirectory: 'MyGitHubRepo'
+    workingDirectory: 'MyGitHubRepo'
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/files'
