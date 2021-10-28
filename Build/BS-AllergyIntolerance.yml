@@ -9,8 +9,8 @@ resources:
 pool: SamplePool
 
 steps:
-# - checkout: self
-# - checkout: MyGitHubRepo
+- checkout: self
+- checkout: MyGitHubRepo
 - task: CopyFiles@2
   inputs:
     # workingDirectory: 'MyGitHubRepo'
