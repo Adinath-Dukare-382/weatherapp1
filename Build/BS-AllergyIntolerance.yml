@@ -9,12 +9,12 @@ resources:
 pool: SamplePool
 
 steps:
-- checkout: self
-- checkout: MyGitHubRepo
+# - checkout: self
+# - checkout: MyGitHubRepo
 - task: CopyFiles@2
   inputs:
     # workingDirectory: 'MyGitHubRepo'
-    SourceFolder: '$(Build.SourcesDirectory)/MyGitHubRepo/POCJson'
+    SourceFolder: '$(Build.SourcesDirectory)'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/files'
 
