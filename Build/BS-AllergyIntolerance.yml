@@ -14,7 +14,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     workingDirectory: 'MyGitHubRepo'
-    SourceFolder: '$(Build.SourcesDirectory)'
+    SourceFolder: '$(Build.SourcesDirectory)/poconjson'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/files'
 
