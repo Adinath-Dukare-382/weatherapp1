@@ -1,7 +1,34 @@
-trigger: none
-pr: none
+trigger:
+  branches:
+    include:
+      - development
+      - master
+  paths:
+    include:
+     - source/*
+    exclude:
+      - Build/*
+      - Infra/*
+      - Deploy/*
+pr:
+  branches:
+    include:
+      - development
+      - master
+  paths:
+    include:
+     - source/*
+    exclude:
+      - Build/*
+      - Infra/*
+      - Deploy/*
 
 resources:
+  pipelines:
+   - pipeline: mypipeline
+     source: BuildForWeatherApp
+     trigger: true
+     
   repositories:
   - repository: MyGitHubRepo 
     type: github
@@ -12,16 +39,16 @@ resources:
 pool: SamplePool
 
 steps:
-- checkout: self
-- checkout: MyGitHubRepo
-- template: Template/terraform_deply.yml
-  parameters:
-     environment: "$(env)"
-     working_dir: "$(Build.SourcesDirectory)/pocenvgroup/Infra"
-     serviceconn_name: "Visual Studio Professional Subscription(36e17b0a-f140-42b7-933a-03495cc621b2)"
-     project_name: "$(project)"
-     azureRmContainerName: "globalstoragecon2"
-     tfstatefile: "weatherapp.tfstate"
-     tfresourcegroupname: "config-demo2"
-     tfstorageaccountname: "globalstorageac"
-
+    - checkout: self
+    - checkout: MyGitHubRepo
+    - template: Template/terraform_deploy.yml
+      parameters:
+         environment: "$(env)"
+         working_dir: "$(Build.SourcesDirectory)/pocenvgroup/Infra/environments/weatherappenv"
+         serviceconn_name: "Visual Studio Professional Subscription(36e17b0a-f140-42b7-933a-03495cc621b2)"
+         project_name: "$(project)"
+         version: "$(version)"
+         azureRmContainerName: "globalstoragecon2"
+         tfstatefile: "weatherapp_$(env).tfstate"
+         tfresourcegroupname: "config-demo2"
+         tfstorageaccountname: "globalstorageac"
