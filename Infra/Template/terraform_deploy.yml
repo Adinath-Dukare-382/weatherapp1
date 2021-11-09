@@ -33,7 +33,7 @@ steps:
   - task: AzureCLI@2
     inputs:
       azureSubscription: 'Visual Studio Professional Subscription(36e17b0a-f140-42b7-933a-03495cc621b2)'
-      scriptType: 'ps'
+      scriptType: 'pscore'
       scriptLocation: 'inlineScript'
       inlineScript: |
                 $appservicePlan = $(az appservice plan list --query "[?tags.env=='${{parameters.environment}}']" | ConvertFrom-Json)
