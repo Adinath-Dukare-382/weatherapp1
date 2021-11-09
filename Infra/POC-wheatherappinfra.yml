@@ -36,7 +36,8 @@ resources:
     name: Adinath-Dukare-382/pocenvgroup
     ref: master
 
-# pool: SamplePool
+pool:
+  vmImage: windows-latest
 
 steps:
     - checkout: self
