@@ -37,15 +37,14 @@ resources:
     ref: master
 
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
 
 steps:
-    - checkout: self
     - checkout: MyGitHubRepo
     - template: Template/terraform_deploy.yml
       parameters:
          environment: "$(env)"
-         working_dir: "$(Build.SourcesDirectory)/pocenvgroup/Infra/environments/weatherappenv"
+         working_dir: "$(Build.SourcesDirectory)/MyGitHubRepo/Infra/environments/weatherappenv"
          serviceconn_name: "Visual Studio Professional Subscription(36e17b0a-f140-42b7-933a-03495cc621b2)"
          project_name: "$(project)"
          version: "$(version)"
