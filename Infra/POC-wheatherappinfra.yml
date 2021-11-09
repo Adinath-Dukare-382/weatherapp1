@@ -36,7 +36,7 @@ resources:
     name: Adinath-Dukare-382/pocenvgroup
     ref: master
 
-pool: SamplePool
+# pool: SamplePool
 
 steps:
     - checkout: self
