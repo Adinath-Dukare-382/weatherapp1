@@ -72,6 +72,13 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
+- task: PublishBuildArtifacts@1
+  displayName: Publish zip file
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)\source\*.nupkg'
+    ArtifactName: 'packages'
+    publishLocation: 'Container'
+
 - task: PowerShell@2
   displayName: 'trigger for relase pipeline'
   inputs:
