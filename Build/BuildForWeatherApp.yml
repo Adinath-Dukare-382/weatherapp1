@@ -92,6 +92,6 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)'
     nuGetFeedType: 'internal'
     publishVstsFeed: '8357f20d-ec6e-46c1-9757-15be033d6919/d6dfe61d-0dd3-4f1a-9790-82c6e413eab3'
