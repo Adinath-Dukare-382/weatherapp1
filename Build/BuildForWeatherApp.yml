@@ -39,6 +39,22 @@ steps:
     restoreSolution: '$(solution)'
 
 - task: DotNetCoreCLI@2
+  displayName: Pack - '$(solution)'
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/$(solution)'
+    configuration: 'Release'
+    packDirectory: '$(Build.ArtifactStagingDirectory)\Nuget'
+    nobuild: true
+    versioningScheme: 'off'
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish NuGet Artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\Nuget'
+    ArtifactName: 'Packages'
+    publishLocation: 'Container'
+- task: DotNetCoreCLI@2
   displayName: Publish Solution
   inputs:
     command: 'publish'
