@@ -78,3 +78,20 @@ steps:
     targetType: 'inline'
     script: 'Write-Host ""#vso[build.addbuildtag]trigger"'
   condition: and(succeeded(),in(variables['Build.reason'],'IndividualCI','PullRequest'))
+
+# - task: NuGetCommand@2
+#   enabled: true
+#   displayName: Push Nuget to Azure feed
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.config'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: '1b38962d-9be0-4287-a101-a6420bcafb67'
+#   condition: and(succeeded(), in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual'))  
+  
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.config'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '8357f20d-ec6e-46c1-9757-15be033d6919/d6dfe61d-0dd3-4f1a-9790-82c6e413eab3'
